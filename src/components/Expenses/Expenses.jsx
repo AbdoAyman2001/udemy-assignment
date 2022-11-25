@@ -4,16 +4,15 @@ import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 import "./Expenses.css";
-
+ 
 const Expenses = (props) => {
-  const [enteredYear, setEnteredYear] = useState('');
+  const [enteredYear, setEnteredYear] = useState(new Date().getFullYear());
   const changeYearHandler = (year) => {
     setEnteredYear(year)
-    console.log(year);
   };
   return (
       <Card className="expenses">
-        <ExpensesFilter onChangeYear={changeYearHandler} />
+        <ExpensesFilter onChangeYear={changeYearHandler} enteredYear={enteredYear} />
         <ExpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}
